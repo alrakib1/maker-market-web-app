@@ -6,7 +6,7 @@ type isConnection = {
 
 const connection: isConnection = {};
 
-export async function ConnectDb() {
+async function connectDb() {
   if (connection.isConnected) {
     console.log("Already connected to db");
     return;
@@ -15,7 +15,7 @@ export async function ConnectDb() {
     connection.isConnected = mongoose.connections[0].readyState === 1;
 
     if (connection.isConnected) {
-      console.log("Use previous connection to the database");
+      console.log("Using previous connection to the database");
       return;
     }
     await mongoose.disconnect();
@@ -28,4 +28,19 @@ export async function ConnectDb() {
 
   const db = await mongoose.connect(connectionUrl);
   console.log("connnected to the database");
+  connection.isConnected = db.connections[0].readyState === 1;
 }
+
+async function disconnectDb() {
+  if (connection.isConnected) {
+    if (process.env.NODE_ENV === "production") {
+      await mongoose.disconnect();
+      connection.isConnected = false;
+    } else {
+      console.log("not disconnecting from db");
+    }
+  }
+}
+
+const db = { connectDb, disconnectDb };
+export default db;
