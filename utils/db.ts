@@ -6,6 +6,8 @@ type isConnection = {
 
 const connection: isConnection = {};
 
+// ! connect to databse
+
 async function connectDb() {
   if (connection.isConnected) {
     console.log("Already connected to db");
@@ -30,6 +32,8 @@ async function connectDb() {
   console.log("connnected to the database");
   connection.isConnected = db.connections[0].readyState === 1;
 }
+
+// ! disconnected from database
 
 async function disconnectDb() {
   if (connection.isConnected) {
