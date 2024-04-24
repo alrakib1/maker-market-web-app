@@ -1,13 +1,10 @@
-import {
-  configureStore,
-  ThunkMiddleware,
-} from "@reduxjs/toolkit";
+import { configureStore, ThunkMiddleware } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
-import thunk from "redux-thunk";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
+import cart from "./cartSlice";
 
-const reducers = combineReducers({});
+const reducers = combineReducers({ cart });
 
 const config = {
   key: "root",
@@ -20,9 +17,7 @@ const store = configureStore({
   reducer: reducer,
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(
-      thunk as unknown as ThunkMiddleware
-    ),
+    getDefaultMiddleware({ serializableCheck: false }),
 });
 
 export default store;
