@@ -13,7 +13,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Maker Market</title>
-        <meta name="description" content="Welcome to Maker Market" />
+        <meta
+          name="description"
+          content="Welcome to Maker Market, a online shopping service for your needs"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Provider store={store}>
