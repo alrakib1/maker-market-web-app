@@ -4,7 +4,11 @@ import { MdSecurity } from "react-icons/md";
 import { BsSuitHeart } from "react-icons/bs";
 import { RiAccountPinCircleLine, RiArrowDropDownFill } from "react-icons/ri";
 import Link from "next/link";
+import { useState } from "react";
+import UserMenu from "./UserMenu";
 export default function Top() {
+  const [loggedIn, setLoggedIn] = useState<Boolean>(true);
+
   return (
     <div className={styles.top}>
       <div className={styles.top__container}>
@@ -36,11 +40,29 @@ export default function Top() {
             </Link>
           </li>
           <li>
-            <div className={styles.flex}>
-              <RiAccountPinCircleLine />
-              <span>Account</span>
-              <RiArrowDropDownFill />
-            </div>
+            {loggedIn ? (
+              <>
+                <div className={styles.flex}>
+                  <Image
+                    src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+                    alt="user-image"
+                    width={100}
+                    height={100}
+                  />
+                  <span>Rakib</span>
+                  <RiArrowDropDownFill />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={styles.flex}>
+                  <RiAccountPinCircleLine />
+                  <span>Account</span>
+                  <RiArrowDropDownFill />
+                </div>
+              </>
+            )}
+            <UserMenu loggedIn/>
           </li>
         </ul>
       </div>

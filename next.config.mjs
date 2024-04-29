@@ -10,7 +10,7 @@ const nextConfig = {
     prependData: `@import "./styles/base.scss";`,
   },
   images: {
-    domains: ["res.cloudinary.com","i.pinimg.com"],
+    domains: ["res.cloudinary.com", "i.pinimg.com", "w7.pngwing.com"],
   },
 };
 
