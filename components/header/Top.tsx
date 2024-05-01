@@ -7,14 +7,15 @@ import Link from "next/link";
 import { useState } from "react";
 import UserMenu from "./UserMenu";
 export default function Top() {
-  const [loggedIn, setLoggedIn] = useState<Boolean>(true);
+  const [loggedIn, setLoggedIn] = useState<boolean>(true);
+  const [visible, setVisible] = useState<boolean>(false);
 
   return (
     <div className={styles.top}>
       <div className={styles.top__container}>
         <div></div>
         <ul className={styles.top__list}>
-          <li>
+          <li className={styles.li}>
             <Image
               src="https://i.pinimg.com/736x/7b/f3/77/7bf3770372ce6f3300caf50d50d452b4.jpg"
               alt="image"
@@ -23,23 +24,27 @@ export default function Top() {
             />
             <span>Bangladesh /usd</span>
           </li>
-          <li>
+          <li className={styles.li}>
             <MdSecurity />
             <span>Buyer protection</span>
           </li>
-          <li>
+          <li className={styles.li}>
             <span>Customer service</span>
           </li>
-          <li>
+          <li className={styles.li}>
             <span>Help</span>
           </li>
-          <li>
+          <li className={styles.li}>
             <BsSuitHeart />
             <Link href="/profile/wishlist">
               <span>Wishlist</span>
             </Link>
           </li>
-          <li>
+          <li
+            className={styles.li}
+            onMouseOver={() => setVisible(true)}
+            onMouseLeave={() => setVisible(false)}
+          >
             {loggedIn ? (
               <>
                 <div className={styles.flex}>
@@ -62,7 +67,7 @@ export default function Top() {
                 </div>
               </>
             )}
-            <UserMenu loggedIn/>
+            {visible && <UserMenu loggedIn={loggedIn} />}
           </li>
         </ul>
       </div>
