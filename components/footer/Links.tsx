@@ -1,26 +1,27 @@
-import React from "react";
-import styles from "@/styles/Home.module.scss";
 import Link from "next/link";
+import styles from "./styles.module.scss";
+import Image from "next/image";
 
 export default function Links() {
   return (
     <div className={styles.footer__links}>
-      {links.map((link, index) => (
-        <ul key={index}>
-          <b>{link.heading}</b>
-          {link.links.map((link) => {
-            return (
-              <li key={link.name}>
-                <Link href={link.link}>{link.name}</Link>
-              </li>
-            );
-          })}
+      {links.map((link, i) => (
+        <ul key={i}>
+          {i === 0 ? (
+            <Image src="/logo.png" alt="logo" width={100} height={50} />
+          ) : (
+            <b>{link.heading}</b>
+          )}
+          {link.links.map((link) => (
+            <li key={link.name}>
+              <Link href={link.link}>{link.name}</Link>
+            </li>
+          ))}
         </ul>
       ))}
     </div>
   );
 }
-
 const links = [
   {
     heading: "SHOPPAY",
