@@ -27,8 +27,8 @@ export default function UserMenu({ loggedIn }: UserMenuProps) {
         </div>
       ) : (
         <div className={styles.flex}>
-          <button>Register</button>
-          <button>Login</button>
+          <button className={styles.btn_primary}>Register</button>
+          <button className={styles.btn_outlined}>Login</button>
         </div>
       )}
       <ul>
@@ -39,19 +39,13 @@ export default function UserMenu({ loggedIn }: UserMenuProps) {
           <Link href="/profile/orders">My Orders</Link>
         </li>
         <li>
-          <Link href="/profile">Account</Link>
+          <Link href="/profile/messages">Message Center</Link>
         </li>
         <li>
-          <Link href="/profile">Account</Link>
+          <Link href="/profile/address">Address</Link>
         </li>
         <li>
-          <Link href="/profile">Account</Link>
-        </li>
-        <li>
-          <Link href="/profile">Account</Link>
-        </li>
-        <li>
-          <Link href="/profile">Account</Link>
+          <Link href="/profile/wishlist">Wishlist</Link>
         </li>
       </ul>
     </div>
