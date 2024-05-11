@@ -9,7 +9,7 @@ type UserMenuProps = {
 export default function UserMenu({ loggedIn }: UserMenuProps) {
   return (
     <div className={styles.menu}>
-      <h4>Welcome to Maker Market !</h4>
+      <h4>Welcome to shoppay !</h4>
       {loggedIn ? (
         <div className={styles.flex}>
           <Image

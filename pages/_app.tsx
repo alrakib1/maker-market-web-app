@@ -12,10 +12,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Maker Market</title>
+        <title>shoppay</title>
         <meta
           name="description"
-          content="Welcome to Maker Market, a online shopping service for your needs"
+          content="Welcome to shoppay, a online shopping service for your needs"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
